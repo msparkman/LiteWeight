@@ -13,18 +13,22 @@ import java.util.Date;
 
 public class LiteWeightApp {
     public static void main( String[] args ) {
-        System.out.println( "Going to save a user!" );
+        System.out.println( "Going to save workout information!" );
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         Collection<LiteWeightEntity> entities = Lists.newArrayList();
 
-        User user = new User();
-        user.setUsername("testUser");
-        user.setPassword("testPassword");
-        user.setDateCreated(new Date());
-        entities.add(user);
+        // Grab the user if it already exists
+        User user = session.get(User.class, 1L);
+        if (user == null) {
+            user = new User();
+            user.setUsername("testUser");
+            user.setPassword("testPassword");
+            user.setDateCreated(new Date());
+            entities.add(user);
+        }
 
         Routine routine = new Routine();
         routine.setDate(new Date());

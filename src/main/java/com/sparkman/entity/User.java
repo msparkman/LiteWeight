@@ -28,7 +28,8 @@ public class User implements LiteWeightEntity, Serializable {
         this.userId = userId;
     }
 
-    @Column(name = "username")
+    @Column(name = "username",
+            unique = true)
     private String username;
     public String getUsername() {
         return username;
