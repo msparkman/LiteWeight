@@ -1,13 +1,19 @@
 package com.sparkman.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name="Routines")
-public class Routine implements Serializable {
+public class Routine implements LiteWeightEntity, Serializable {
 
     public Routine() {
     }
@@ -16,11 +22,11 @@ public class Routine implements Serializable {
     @Column(name = "routineId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long routineId;
-    public Long getRoutineId() {
+    public Long getId() {
         return routineId;
     }
 
-    public void setRoutineId(Long routineId) {
+    public void setId(Long routineId) {
         this.routineId = routineId;
     }
 
@@ -73,15 +79,5 @@ public class Routine implements Serializable {
 
     public void setRestMinutes(Double restMinutes) {
         this.restMinutes = restMinutes;
-    }
-
-    @OneToMany(cascade = {CascadeType.ALL})
-    private Collection<Set> sets;
-    public Collection<Set> getSets() {
-        return sets;
-    }
-
-    public void setSets(Collection<Set> sets) {
-        this.sets = sets;
     }
 }

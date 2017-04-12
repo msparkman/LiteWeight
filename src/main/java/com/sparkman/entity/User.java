@@ -1,13 +1,17 @@
 package com.sparkman.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name="Users")
-public class User implements Serializable {
+public class User implements LiteWeightEntity, Serializable {
 
     public User() {
     }
@@ -16,11 +20,11 @@ public class User implements Serializable {
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
-    public Long getUserId() {
+    public Long getId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setId(Long userId) {
         this.userId = userId;
     }
 
@@ -52,15 +56,5 @@ public class User implements Serializable {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    @OneToMany(cascade = {CascadeType.ALL})
-    private Collection<Routine> routines;
-    public Collection<Routine> getRoutines() {
-        return routines;
-    }
-
-    public void setRoutines(Collection<Routine> routines) {
-        this.routines = routines;
     }
 }

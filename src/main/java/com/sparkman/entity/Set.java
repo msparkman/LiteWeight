@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="Sets")
-public class Set implements Serializable {
+public class Set implements LiteWeightEntity, Serializable {
 
     public Set() {
     }
@@ -14,11 +14,11 @@ public class Set implements Serializable {
     @Column(name = "setId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long setId;
-    public Long getSetId() {
+    public Long getId() {
         return setId;
     }
 
-    public void setSetId(Long setId) {
+    public void setId(Long setId) {
         this.setId = setId;
     }
 
