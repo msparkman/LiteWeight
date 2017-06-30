@@ -1,6 +1,7 @@
 package com.sparkman;
 
 import com.google.common.collect.Lists;
+import com.sparkman.entity.GymSession;
 import com.sparkman.entity.LiteWeightEntity;
 import com.sparkman.entity.Routine;
 import com.sparkman.entity.Set;
@@ -30,12 +31,15 @@ public class LiteWeightApp {
             entities.add(user);
         }
 
+		GymSession gymSession = new GymSession();
+        gymSession.setDate(new Date());
+        gymSession.setType("chest");
+        gymSession.setUser(user);
+
         Routine routine = new Routine();
-        routine.setDate(new Date());
+        routine.setGymSession(gymSession);
         routine.setName("testWorkout1");
         routine.setRestMinutes(1.5);
-        routine.setType("chest");
-        routine.setUser(user);
         entities.add(routine);
 
         Set set1 = new Set();

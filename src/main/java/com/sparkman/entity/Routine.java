@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name="Routines")
@@ -30,36 +29,16 @@ public class Routine implements LiteWeightEntity, Serializable {
         this.routineId = routineId;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
-    public User getUser() {
-        return user;
-    }
+	@ManyToOne
+	@JoinColumn(name = "sessionId")
+	private GymSession gymSession;
+	public GymSession getGymSession() {
+		return gymSession;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Column(name = "date")
-    private Date date;
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Column(name = "type")
-    private String type;
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+	public void setGymSession(GymSession gymSession) {
+		this.gymSession = gymSession;
+	}
 
     @Column(name = "name")
     private String name;
