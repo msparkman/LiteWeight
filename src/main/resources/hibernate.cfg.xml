@@ -18,9 +18,10 @@
         <property name="show_sql">true</property>
 
         <!-- List of XML mapping files -->
-        <mapping class="com.sparkman.entity.Routine"/>
-        <mapping class="com.sparkman.entity.Set"/>
-        <mapping class="com.sparkman.entity.User"/>
+        <mapping class="sparkman.entity.GymSession"/>
+        <mapping class="sparkman.entity.Routine"/>
+        <mapping class="sparkman.entity.Set"/>
+        <mapping class="sparkman.entity.User"/>
 
     </session-factory>
 </hibernate-configuration>

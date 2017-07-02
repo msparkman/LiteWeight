@@ -1,4 +1,4 @@
-package com.sparkman.entity;
+package sparkman.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

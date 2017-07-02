@@ -1,18 +1,18 @@
-package com.sparkman;
+package sparkman;
 
 import com.google.common.collect.Lists;
-import com.sparkman.entity.GymSession;
-import com.sparkman.entity.LiteWeightEntity;
-import com.sparkman.entity.Routine;
-import com.sparkman.entity.Set;
-import com.sparkman.entity.User;
-import com.sparkman.util.HibernateUtil;
+import sparkman.entity.GymSession;
+import sparkman.entity.LiteWeightEntity;
+import sparkman.entity.Routine;
+import sparkman.entity.Set;
+import sparkman.entity.User;
+import sparkman.util.HibernateUtil;
 import org.hibernate.Session;
 
 import java.util.Collection;
 import java.util.Date;
 
-public class LiteWeightApp {
+public class LiteWeightTest {
     public static void main( String[] args ) {
         System.out.println( "Going to save workout information!" );
 
@@ -35,6 +35,7 @@ public class LiteWeightApp {
         gymSession.setDate(new Date());
         gymSession.setType("chest");
         gymSession.setUser(user);
+        entities.add(gymSession);
 
         Routine routine = new Routine();
         routine.setGymSession(gymSession);

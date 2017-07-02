@@ -1,4 +1,4 @@
-package com.sparkman.entity;
+package sparkman.entity;
 
 public interface LiteWeightEntity {
     Long getId();
