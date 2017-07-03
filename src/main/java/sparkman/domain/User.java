@@ -1,4 +1,4 @@
-package sparkman.entity;
+package sparkman.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

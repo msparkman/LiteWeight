@@ -1,4 +1,4 @@
-package sparkman.entity;
+package sparkman.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

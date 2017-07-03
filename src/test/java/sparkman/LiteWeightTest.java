@@ -1,11 +1,11 @@
 package sparkman;
 
 import com.google.common.collect.Lists;
-import sparkman.entity.GymSession;
-import sparkman.entity.LiteWeightEntity;
-import sparkman.entity.Routine;
-import sparkman.entity.Set;
-import sparkman.entity.User;
+import sparkman.domain.GymSession;
+import sparkman.domain.LiteWeightEntity;
+import sparkman.domain.Routine;
+import sparkman.domain.Set;
+import sparkman.domain.User;
 import sparkman.util.HibernateUtil;
 import org.hibernate.Session;
 
