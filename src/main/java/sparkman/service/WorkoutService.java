@@ -1,10 +1,17 @@
 package sparkman.service;
 
-import org.springframework.stereotype.Service;
 import sparkman.domain.GymSession;
 import sparkman.domain.User;
 
 public interface WorkoutService {
+    /**
+     * Retrieves a user
+     *
+     * @param userId the ID of the user in the database
+     * @return User from the database
+     */
+    User getUser(Long userId);
+
     /**
      * Saves a new user
      *

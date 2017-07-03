@@ -1,7 +1,6 @@
 package sparkman.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sparkman.service.WorkoutService;
 import sparkman.domain.GymSession;
 import sparkman.domain.User;
@@ -15,18 +14,24 @@ public class LiteWeightController {
 	    this.workoutService = workoutService;
     }
 
-	@RequestMapping("/")
+	@RequestMapping(value = "/")
 	public String home() {
 		return "cool";
 	}
 
-	@RequestMapping("/save")
-	public GymSession saveWorkout(GymSession gymSession) {
-		return new GymSession();
+	@RequestMapping(value = "/workout/{userId}", method = RequestMethod.PUT)
+	public GymSession saveWorkout(@PathVariable String userId, @RequestBody GymSession gymSession) {
+		if (gymSession.getUser() == null) {
+		    User user = new User();
+		    user.setId(Long.valueOf(userId));
+		    gymSession.setUser(user);
+        }
+
+	    return workoutService.saveWorkout(gymSession);
 	}
 
-	@RequestMapping("/user")
-	public User saveUser(User user) {
+	@RequestMapping(value = "/user", method = RequestMethod.PUT)
+	public User saveUser(@RequestBody User user) {
 		return workoutService.saveUser(user);
 	}
 }
