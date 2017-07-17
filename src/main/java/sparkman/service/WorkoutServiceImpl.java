@@ -1,17 +1,23 @@
 package sparkman.service;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sparkman.domain.GymSession;
 import sparkman.domain.User;
+import sparkman.domain.repository.GymSessionRepository;
+import sparkman.domain.repository.UserRepository;
 import sparkman.util.HibernateUtil;
 
 import java.util.Date;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
+	@Autowired private UserRepository userRepository;
+	@Autowired private GymSessionRepository gymSessionRepository;
+
     public User getUser(Long userId) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        /*Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         User user = session.get(User.class, userId);
@@ -19,7 +25,8 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         HibernateUtil.getSessionFactory().close();
 
-        return user;
+        return user;*/
+        return userRepository.findOne(userId);
     }
 
     public User saveUser(User user) {
@@ -27,7 +34,7 @@ public class WorkoutServiceImpl implements WorkoutService {
             user.setDateCreated(new Date());
         }
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        /*Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         session.save(user);
@@ -35,7 +42,8 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         HibernateUtil.getSessionFactory().close();
 
-        return user;
+        return user;*/
+        return userRepository.save(user);
     }
 
     public GymSession saveWorkout(GymSession gymSession) {
@@ -49,7 +57,9 @@ public class WorkoutServiceImpl implements WorkoutService {
             gymSession.setUser(user);
         }
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        return gymSessionRepository.save(gymSession);
+
+        /*Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         session.save(gymSession);
@@ -57,6 +67,6 @@ public class WorkoutServiceImpl implements WorkoutService {
 
         HibernateUtil.getSessionFactory().close();
 
-        return gymSession;
+        return gymSession;*/
     }
 }
