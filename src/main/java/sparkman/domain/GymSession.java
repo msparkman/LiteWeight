@@ -12,22 +12,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="Sessions")
+@Table(name="GymSessions")
 public class GymSession implements LiteWeightEntity, Serializable {
 
 	public GymSession() {}
 
 	@Id
-	@Column(name = "setId")
+	@Column(name = "gymSessionId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long setId;
-
+	private Long gymSessionId;
 	public Long getId() {
-		return setId;
+		return gymSessionId;
 	}
 
-	public void setId(Long id) {
-		this.setId = setId;
+	public void setId(Long gymSessionId) {
+		this.gymSessionId = gymSessionId;
 	}
 
 	@ManyToOne

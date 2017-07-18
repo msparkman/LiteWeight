@@ -1,22 +1,10 @@
 package sparkman;
 
-import com.google.common.collect.Lists;
-import sparkman.domain.GymSession;
-import sparkman.domain.LiteWeightEntity;
-import sparkman.domain.Routine;
-import sparkman.domain.Set;
-import sparkman.domain.User;
-import sparkman.util.HibernateUtil;
-import org.hibernate.Session;
-
-import java.util.Collection;
-import java.util.Date;
-
 public class LiteWeightTest {
     public static void main( String[] args ) {
         System.out.println( "Going to save workout information!" );
 
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        /*Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         Collection<LiteWeightEntity> entities = Lists.newArrayList();
@@ -69,7 +57,7 @@ public class LiteWeightTest {
 
         session.getTransaction().commit();
 
-        HibernateUtil.getSessionFactory().close();
+        HibernateUtil.getSessionFactory().close();*/
 
         System.out.println("Everything is done.");
     }
