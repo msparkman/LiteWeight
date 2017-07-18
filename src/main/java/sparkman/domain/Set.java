@@ -7,8 +7,7 @@ import java.io.Serializable;
 @Table(name="Sets")
 public class Set implements LiteWeightEntity, Serializable {
 
-    public Set() {
-    }
+    public Set() {}
 
     @Id
     @Column(name = "setId")

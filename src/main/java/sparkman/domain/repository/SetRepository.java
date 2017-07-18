@@ -1,9 +1,9 @@
 package sparkman.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import sparkman.domain.Set;
 
-@Repository
+@Transactional
 public interface SetRepository extends CrudRepository<Set, Long> {
 }

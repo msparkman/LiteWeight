@@ -13,8 +13,7 @@ import java.util.Date;
 @Table(name="Users")
 public class User implements LiteWeightEntity, Serializable {
 
-    public User() {
-    }
+    public User() {}
 
     @Id
     @Column(name = "userId")

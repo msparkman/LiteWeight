@@ -14,8 +14,7 @@ import java.io.Serializable;
 @Table(name="Routines")
 public class Routine implements LiteWeightEntity, Serializable {
 
-    public Routine() {
-    }
+    public Routine() {}
 
     @Id
     @Column(name = "routineId")
@@ -30,7 +29,7 @@ public class Routine implements LiteWeightEntity, Serializable {
     }
 
 	@ManyToOne
-	@JoinColumn(name = "sessionId")
+	@JoinColumn(name = "gymSessionId")
 	private GymSession gymSession;
 	public GymSession getGymSession() {
 		return gymSession;
