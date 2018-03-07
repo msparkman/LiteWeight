@@ -12,23 +12,48 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
+@SuppressWarnings("unused")
 @Configuration
 @EnableJpaRepositories
 @EnableTransactionManagement
-public class ApplicationConfig {
+class ApplicationConfig {
+	@SuppressWarnings("WeakerAccess")
 	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/liteweight");
-		dataSource.setUsername( "liteweight" );
-		dataSource.setPassword( "liteweight123" );
+	DataSource dataSource() {
+		Properties properties = new Properties();
+		InputStream input = null;
+		DriverManagerDataSource dataSource = null;
+		try {
+			input = ApplicationConfig.class.getResourceAsStream("/application.properties");
+			properties.load(input);
+
+			dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName(properties.getProperty("spring.datasource.driver-class-name"));
+			dataSource.setUrl(properties.getProperty("spring.datasource.url"));
+			dataSource.setUsername(properties.getProperty("spring.datasource.username"));
+			dataSource.setPassword(properties.getProperty("spring.datasource.password"));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 		return dataSource;
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	@Bean
-	public EntityManagerFactory entityManagerFactory() {
+	EntityManagerFactory entityManagerFactory() {
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(true);
