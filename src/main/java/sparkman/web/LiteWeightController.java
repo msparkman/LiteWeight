@@ -30,6 +30,11 @@ public class LiteWeightController {
 	    return workoutService.saveWorkout(gymSession);
 	}
 
+	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
+	public User getUser(@PathVariable String userId) {
+		return workoutService.getUser(Long.valueOf(userId));
+	}
+
 	@RequestMapping(value = "/user", method = RequestMethod.PUT)
 	public User saveUser(@RequestBody User user) {
 		return workoutService.saveUser(user);
