@@ -1,7 +1,10 @@
 package sparkman.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import sparkman.domain.GymSession;
 import sparkman.domain.Routine;
 import sparkman.domain.Set;
@@ -11,8 +14,6 @@ import sparkman.domain.repository.RoutineRepository;
 import sparkman.domain.repository.SetRepository;
 import sparkman.domain.repository.UserRepository;
 
-import java.util.Date;
-
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
 	@Autowired private GymSessionRepository gymSessionRepository;
@@ -21,7 +22,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Autowired private UserRepository userRepository;
 
 	public GymSession getGymSession(Long gymSessionId) {
-		return gymSessionRepository.findOne(gymSessionId);
+		return gymSessionRepository.findById(gymSessionId).orElse(null);
 	}
 
 	public GymSession saveGymSession(GymSession gymSession) {
@@ -33,7 +34,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	public Routine getRoutine(Long routineId) {
-    	return routineRepository.findOne(routineId);
+    	return routineRepository.findById(routineId).orElse(null);
 	}
 
 	public Routine saveRoutine(Routine routine) {
@@ -41,7 +42,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	public Set getSet(Long setId) {
-    	return setRepository.findOne(setId);
+    	return setRepository.findById(setId).orElse(null);
 	}
 
 	public Set saveSet(Set set) {
@@ -49,7 +50,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 	}
 
 	public User getUser(Long userId) {
-		return userRepository.findOne(userId);
+		return userRepository.findById(userId).orElse(null);
 	}
 
 	public User saveUser(User user) {
