@@ -7,18 +7,18 @@ import org.springframework.stereotype.Service;
 
 import sparkman.domain.GymSession;
 import sparkman.domain.Routine;
-import sparkman.domain.Set;
+import sparkman.domain.RoutineSet;
 import sparkman.domain.User;
 import sparkman.domain.repository.GymSessionRepository;
 import sparkman.domain.repository.RoutineRepository;
-import sparkman.domain.repository.SetRepository;
+import sparkman.domain.repository.RoutineSetRepository;
 import sparkman.domain.repository.UserRepository;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
 	@Autowired private GymSessionRepository gymSessionRepository;
 	@Autowired private RoutineRepository routineRepository;
-	@Autowired private SetRepository setRepository;
+	@Autowired private RoutineSetRepository routineSetRepository;
 	@Autowired private UserRepository userRepository;
 
 	public GymSession getGymSession(Long gymSessionId) {
@@ -41,12 +41,12 @@ public class WorkoutServiceImpl implements WorkoutService {
     	return routineRepository.save(routine);
 	}
 
-	public Set getSet(Long setId) {
-    	return setRepository.findById(setId).orElse(null);
+	public RoutineSet getRoutineSet(Long setId) {
+    	return routineSetRepository.findById(setId).orElse(null);
 	}
 
-	public Set saveSet(Set set) {
-    	return setRepository.save(set);
+	public RoutineSet saveRoutineSet(RoutineSet routineSet) {
+    	return routineSetRepository.save(routineSet);
 	}
 
 	public User getUser(Long userId) {

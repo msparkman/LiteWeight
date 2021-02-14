@@ -16,7 +16,11 @@ import javax.persistence.Table;
 @Table(name="GymSessions")
 public class GymSession implements LiteWeightEntity, Serializable {
 
-	public GymSession() {}
+	private static final long serialVersionUID = 1L;
+
+	public GymSession() {
+		// Empty constructor necessary for hibernate, I think
+	}
 
 	@Id
 	@Column(name = "gymSessionId")

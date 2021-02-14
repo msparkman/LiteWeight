@@ -15,7 +15,11 @@ import javax.persistence.Table;
 @Table(name="Routines")
 public class Routine implements LiteWeightEntity, Serializable {
 
-    public Routine() {}
+    private static final long serialVersionUID = 1L;
+
+    public Routine() {
+        // Empty constructor necessary for hibernate, I think
+    }
 
     @Id
     @Column(name = "routineId")

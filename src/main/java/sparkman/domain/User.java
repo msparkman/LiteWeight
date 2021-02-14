@@ -14,7 +14,11 @@ import javax.persistence.Table;
 @Table(name="Users")
 public class User implements LiteWeightEntity, Serializable {
 
-    public User() {}
+    private static final long serialVersionUID = 1L;
+
+    public User() {
+        // Empty constructor necessary for hibernate, I think
+    }
 
     @Id
     @Column(name = "userId")
