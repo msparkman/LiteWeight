@@ -1,24 +1,36 @@
 package sparkman.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 @Entity
-@Table(name="Sets")
-public class Set implements LiteWeightEntity, Serializable {
+@Table(name="RoutineSets")
+public class RoutineSet implements LiteWeightEntity, Serializable {
 
-    public Set() {}
+    private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "setId")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long setId;
-    public Long getId() {
-        return setId;
+    public RoutineSet() {
+        // Empty constructor necessary for hibernate, I think
     }
 
-    public void setId(Long setId) {
-        this.setId = setId;
+    @Id
+    @Column(name = "routineSetId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long routineSetId;
+    public Long getId() {
+        return routineSetId;
+    }
+
+    public void setId(Long routineSetId) {
+        this.routineSetId = routineSetId;
     }
 
     @ManyToOne

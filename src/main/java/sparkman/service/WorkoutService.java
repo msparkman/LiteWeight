@@ -2,7 +2,7 @@ package sparkman.service;
 
 import sparkman.domain.GymSession;
 import sparkman.domain.Routine;
-import sparkman.domain.Set;
+import sparkman.domain.RoutineSet;
 import sparkman.domain.User;
 
 public interface WorkoutService {
@@ -40,20 +40,20 @@ public interface WorkoutService {
 	Routine saveRoutine(Routine routine);
 
 	/**
-	 * Retrieves the set
+	 * Retrieves the routine set
 	 *
 	 * @param setId the ID of the set in the database
-	 * @return Set from the database
+	 * @return RoutineSet from the database
 	 */
-	Set getSet(Long setId);
+	RoutineSet getRoutineSet(Long routineSetId);
 
 	/**
-	 * Saves a new set
+	 * Saves a new routineSet
 	 *
-	 * @param set the set information
-	 * @return Set containing the saved information
+	 * @param routineSet the set information
+	 * @return RoutineSet containing the saved information
 	 */
-	Set saveSet(Set set);
+	RoutineSet saveRoutineSet(RoutineSet routineSet);
 
     /**
      * Retrieves a user

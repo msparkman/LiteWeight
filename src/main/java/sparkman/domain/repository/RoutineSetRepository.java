@@ -2,8 +2,9 @@ package sparkman.domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
-import sparkman.domain.Set;
+
+import sparkman.domain.RoutineSet;
 
 @Transactional
-public interface SetRepository extends CrudRepository<Set, Long> {
+public interface RoutineSetRepository extends CrudRepository<RoutineSet, Long> {
 }

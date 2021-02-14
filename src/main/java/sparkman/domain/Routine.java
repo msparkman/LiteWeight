@@ -1,5 +1,7 @@
 package sparkman.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,13 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 @Entity
 @Table(name="Routines")
 public class Routine implements LiteWeightEntity, Serializable {
 
-    public Routine() {}
+    private static final long serialVersionUID = 1L;
+
+    public Routine() {
+        // Empty constructor necessary for hibernate, I think
+    }
 
     @Id
     @Column(name = "routineId")
