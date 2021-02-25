@@ -34,6 +34,7 @@
                 <version>3.3.1</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>${env.TOMCAT_HOME}/webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

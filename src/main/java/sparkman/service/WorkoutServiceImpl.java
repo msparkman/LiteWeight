@@ -1,6 +1,7 @@
 package sparkman.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 	@Autowired private RoutineRepository routineRepository;
 	@Autowired private RoutineSetRepository routineSetRepository;
 	@Autowired private UserRepository userRepository;
+
+	public List<GymSession> getGymSessions() {
+		return (List<GymSession>) gymSessionRepository.findAll();
+	}
 
 	public GymSession getGymSession(Long gymSessionId) {
 		return gymSessionRepository.findById(gymSessionId).orElse(null);

@@ -1,5 +1,7 @@
 package sparkman.web;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,11 @@ public class LiteWeightController {
 	@RequestMapping(value = "/")
 	public String home() {
 		return "cool";
+	}
+
+	@RequestMapping(value = "/gymSessions", method = RequestMethod.GET)
+	public List<GymSession> getAllGymSessions() {
+		return workoutService.getGymSessions();
 	}
 
 	@RequestMapping(value = "/workout/{userId}", method = RequestMethod.PUT)

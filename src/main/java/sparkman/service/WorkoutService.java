@@ -1,11 +1,20 @@
 package sparkman.service;
 
+import java.util.List;
+
 import sparkman.domain.GymSession;
 import sparkman.domain.Routine;
 import sparkman.domain.RoutineSet;
 import sparkman.domain.User;
 
 public interface WorkoutService {
+
+	/**
+	 * Returns all gym sessions
+	 *
+	 * @return List<GymSession> containing all gym sessions
+	 */
+	List<GymSession> getGymSessions();
 
 	/**
 	 * Retrieves the gym session
