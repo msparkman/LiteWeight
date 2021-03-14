@@ -1,0 +1,39 @@
+README Notes
+
+1. Install Postgres (version 11 was used here)
+	(the default user `postgres` was given a password of `password`)
+	a. create a user for the app (run postgres with the default user to create
+		i. 	user: liteweight
+			pass: liteweight123
+	b. create a database called liteweight with that user as an owner
+		i.	make sure to have that username/password in the application.properties
+2. Run postgres
+	- `sudo service postgresql start`
+	- restart the whole service with: 
+		- `sudo /etc/init.d/postgresql restart`
+	- check the log at: 
+		- `/var/log/postgresql/postgresql-11-main.log`
+	a. Edit the pg_hba.conf file to allow access from outside for that new database
+		- add `host    liteweight    liteweight    172.17.0.0/16    trust`
+	b. Edit postgresql.conf to listen to stuff outside localhost.
+		- uncomment `listen_addresses = 'localhost'` and change 'localhost' to '*'
+3. Install docker
+4. Run `mvn in` package the terminal for this project's directory to build the jar.
+5. Add a Dockerfile to the project's directory that looks like this:
+	```
+		FROM openjdk:8-jdk-alpine
+		RUN addgroup -S spring && adduser -S spring -G spring
+		USER spring:spring
+		ARG JAR_FILE=target/*.jar
+		COPY ${JAR_FILE} lite-weight.jar
+		ENTRYPOINT ["java","-jar","/lite-weight.jar"]
+	```
+6. Build the docker image:
+	- `docker build -t springio/gs-spring-boot-docker .`
+	- probably should change that image name to be liteweight-docker or something
+7. Run docker image:
+	- `docker run -p 8080:8080 springio/gs-spring-boot-docker`
+	- eventually add the argument `--add-host:database:172.17.0.1` to that docker run command. 
+	-	And then figure out how to use `database` as a variable in the spring.datasource.url instead of
+	-	hardcoding the postgres DB IP
+8. If the docker container spins up fine, navigate to http://localhost:8080/ to see if it loads
